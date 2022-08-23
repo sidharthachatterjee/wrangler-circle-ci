@@ -1,14 +1,17 @@
 version: 2.1
-
 jobs:
-  build:
+  Publish-to-Pages:
     docker:
       - image: cimg/node:18.7.0
-    environment:
-      CLOUDFLARE_ACCOUNT_ID: $CLOUDFLARE_ACCOUNT_ID
-      CLOUDFLARE_API_TOKEN: $CLOUDFLARE_API_TOKEN
+
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 20.10.14
+      # Run your project's build step
+      - run: npm install
+      # Publish with wrangler
       - run: yarn deploy
+
+workflows:
+  Publish-to-Pages-workflow:
+    jobs:
+      - Publish-to-Pages
