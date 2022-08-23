@@ -1,0 +1,6 @@
+{
+  "name": "wrangler-circle-ci",
+  "scripts": {
+    "deploy": "npx wrangler pages publish public --project-name=breathe"
+  }
+}
